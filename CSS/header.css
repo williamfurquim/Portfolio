@@ -1,0 +1,141 @@
+/* --- Header base --- */
+header {
+    width: 100%;
+    padding: 1rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    position: relative;
+    z-index: 10;
+    box-sizing: border-box;
+}
+
+/* Navegação */
+.nav-links ul {
+    display: flex;
+    gap: 3rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    position: relative;
+    font-size: clamp(1rem, 1.8vw, 1.3rem);
+    color: rgb(255, 255, 255);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background: white;
+    transition: 0.3s;
+
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Botão de contato */
+.contact-btn {
+    padding: 0.8rem 1.8rem;
+    border-radius: 25px;
+    border: 2px solid var(--azul-claro);
+    background: transparent;
+    color: var(--azul-claro);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-btn:hover {
+    background: var(--azul-claro);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Hamburger menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 27px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+}
+
+/* --- Responsividade --- */
+
+/* Tablets */
+@media screen and (max-width: 1024px) {
+    .nav-links ul {
+        gap: 2rem;
+    }
+
+    .contact-btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+    header {
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        width: 100%;
+        display: none;
+        /* Menu escondido por padrão */
+        background: var(--azul-claro);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        flex-direction: column;
+        padding: 1rem 0;
+    }
+
+    .nav-links a {
+        color: rgb(0, 0, 0);
+        font-size: 1.2rem;
+    }
+
+    .nav-links a::after {
+        background: rgb(0, 0, 0);
+    }
+
+    .nav-links ul {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .contact-btn {
+        text-align: center;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    /* Menu ativo */
+    .nav-links.active {
+        display: flex;
+    }
+}

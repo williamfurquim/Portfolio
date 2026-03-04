@@ -1,0 +1,83 @@
+.contato {
+    padding: 100px 5%;
+    background: var(--fundo);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contato-container {
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    background: rgba(255, 255, 255, 0.03); /* Efeito sutil de vidro */
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(11, 184, 227, 0.2); /* Borda no seu azul claro */
+    backdrop-filter: blur(10px);
+}
+
+.contato-foto img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--azul-claro);
+    box-shadow: 0 0 20px rgba(11, 184, 227, 0.4);
+}
+
+.contato-conteudo h2 {
+    color: #fff;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.contato-conteudo p {
+    color: #ccc;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.contato-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-group {
+    display: flex;
+    gap: 15px;
+}
+
+/* Reutilizando sua classe de botão contact-btn com ajuste de largura */
+.contato-form .contact-btn {
+    align-self: flex-start;
+    padding: 15px 40px;
+    cursor: pointer;
+}
+
+/* RESPONSIVIDADE (MOBILE) */
+@media (max-width: 768px) {
+    .contato-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .contato-foto img {
+        width: 180px;
+        height: 180px;
+    }
+
+
+    .contato-form .contact-btn {
+        width: 100%; /* Botão ocupa tudo no celular */
+    }
+
+    .contato-conteudo h2 {
+        font-size: 1.8rem;
+    }
+}

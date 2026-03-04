@@ -1,0 +1,178 @@
+/* Container principal */
+.meus-projetos {
+    background: var(--fundo);
+    width: 100%;
+    padding: 3rem 0;
+    box-sizing: border-box;
+}
+
+/* Carrossel */
+.carrossel {
+    width: min(90%, 900px);
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+}
+
+/* Título */
+.carrossel h2 {
+    text-align: center;
+    font-size: clamp(1.8rem, 2vw, 2.2rem);
+    margin-bottom: 20px;
+    color: var(--azul-claro);
+    cursor: default;
+}
+
+/* Slides */
+.carrossel-container {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    min-width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.slide.active {
+    display: flex;
+}
+
+.slide video {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 24px;
+}
+
+/* Botões de navegação */
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border-radius: 10%;
+    transition: 0.2s;
+    z-index: 10;
+}
+
+.prev:hover,
+.next:hover {
+    background: var(--azul-claro);
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* Área de descrição */
+.projeto-info {
+    margin-top: 2rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0 1rem; /* evita encostar na borda */
+    box-sizing: border-box;
+}
+
+.projeto-logo {
+    width: 120px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.projeto-texto {
+    max-width: 600px;
+    color: white;
+    text-align: left;
+}
+
+/* Títulos e parágrafos */
+.projeto-texto h3 {
+    font-size: clamp(1.6rem, 4vw, 2rem);
+    margin-bottom: 0.5rem;
+    color: var(--azul-claro);
+}
+
+.projeto-texto p {
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+    line-height: 1.4;
+}
+
+/* --- Responsividade --- */
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .carrossel {
+        width: 95%;
+    }
+
+    .slide video {
+        max-height: 350px;
+    }
+
+    .projeto-info {
+        gap: 1rem;
+    }
+}
+
+/* Tablets pequenos / phablets */
+@media (max-width: 768px) {
+    .projeto-info {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+    }
+
+    .projeto-texto {
+        max-width: 100%;
+    }
+
+    .projeto-texto p {
+        font-size: 1.3rem;
+    }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+    .slide video {
+        max-height: 250px;
+    }
+
+    .projeto-info {
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 0 0.5rem; /* mantém afastamento da borda */
+    }
+
+    .projeto-logo {
+        width: 100px;
+    }
+
+    .projeto-texto h3 {
+        font-size: 1.5rem;
+    }
+
+    .projeto-texto p {
+        font-size: 1rem;
+    }
+
+    .prev,
+    .next {
+        padding: 0.6rem 0.8rem;
+        font-size: 1.2rem;
+    }
+}

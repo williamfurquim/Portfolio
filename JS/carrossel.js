@@ -29,7 +29,7 @@ const projetos = [
     },
     {
         titulo: "Proximity",
-        descricao: "Aplicativo web inovador que potencializa a comunicação e o engajamento em comunidades, oferecendo funcionalidades como troca de itens entre vizinhos, alertas inteligentes em tempo real com integração à API do Google Maps, e um mural interativo de notícias e eventos locais. Desenvolvido com HTML, CSS e JavaScript, o projeto também conta com suporte a PWA, garantindo uma experiência dinâmica, responsiva e acessível em qualquer dispositivo.",
+        descricao: "Aplicativo web inovador que potencializa a comunicação e o engajamento em comunidades, oferecendo funcionalidades como troca de itens entre vizinhos, alertas inteligentes em tempo real com integração à API do Google Maps e um mural interativo de notícias e eventos locais. Desenvolvido com HTML, CSS e JavaScript, o projeto também conta com suporte a PWA, garantindo uma experiência dinâmica, responsiva e acessível em qualquer dispositivo.",
         logo: "./img/Proximity.png"
     },
     {

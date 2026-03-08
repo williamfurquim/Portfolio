@@ -20,6 +20,42 @@ header {
     padding: 0;
 }
 
+.nav-links.active ul li {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.nav-links.active ul li:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.nav-links.active ul li:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.nav-links.active ul li:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.nav-links.active ul li:nth-child(4) { animation-delay: 0.4s; } /* Este faltava */
+
+@keyframes fadeInMenu {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Animação dos Itens (Subindo e aparecendo) */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .nav-links a {
     text-decoration: none;
     color: white;
@@ -66,15 +102,24 @@ header {
 .hamburger {
     display: none;
     flex-direction: column;
-    gap: 5px;
+    justify-content: space-between;
+    /* Espaça as linhas igualmente */
+    width: 30px;
+    height: 21px;
+    /* Altura fixa para controlar o espaço entre as linhas */
     cursor: pointer;
+    z-index: 100;
 }
 
 .hamburger span {
-    width: 27px;
+    width: 100%;
     height: 3px;
     background: white;
     border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+    /* Transição suave para tudo */
+    transform-origin: center;
+    /* Origem no centro para um X simétrico */
 }
 
 /* --- Responsividade --- */
@@ -91,24 +136,73 @@ header {
     }
 }
 
+
+
 /* Mobile */
 @media screen and (max-width: 768px) {
     header {
         flex-wrap: wrap;
-        justify-content: space-evenly;
+        justify-content: space-between;
         gap: 1rem;
     }
 
     .nav-links {
-        width: 100%;
         display: none;
-        /* Menu escondido por padrão */
-        background: var(--azul-claro);
-        position: absolute;
-        top: 100%;
+        /* Mantém escondido por padrão */
+        position: fixed;
+        /* Fixa na tela, independente do scroll */
+        top: 0;
         left: 0;
+        width: 50%;
+        /* Ocupa metade da largura */
+        height: 100vh;
+        /* Ocupa a altura total da janela */
+        background:   rgba(11, 184, 227, 0.578);
+        backdrop-filter: blur(10px);
         flex-direction: column;
-        padding: 1rem 0;
+        justify-content: center;
+        /* Centraliza os links verticalmente */
+        align-items: center;
+        z-index: 99;
+        /* Fica acima de tudo, mas abaixo do botão hamburger se necessário */
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+        /* Sombra para dar profundidade */
+
+        transform: translateX(-100%);
+        /* Começa fora da tela à esquerda */
+        transition: transform 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+        display: flex !important;
+        /* Deixe como flex, mas escondido pelo transform */
+        visibility: hidden;
+    }
+
+    .nav-links ul li a {
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    .nav-links ul li {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+
+    /* Quando clicar no hamburger, eles aparecem */
+    .nav-links.active ul li {
+        animation: fadeInUp 0.5s ease forwards;
+    }
+
+    /* Os tempos de espera para cada um */
+    .nav-links.active ul li:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    .nav-links.active ul li:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .nav-links.active ul li:nth-child(3) {
+        animation-delay: 0.3s;
     }
 
     .nav-links a {
@@ -117,13 +211,13 @@ header {
     }
 
     .nav-links a::after {
-        background: rgb(0, 0, 0);
+        background: rgb(255, 255, 255);
     }
 
     .nav-links ul {
         flex-direction: column;
-        gap: 1.5rem;
-        text-align: center;
+        gap: 2.5rem;
+        text-align: start;
     }
 
     .contact-btn {
@@ -137,5 +231,20 @@ header {
     /* Menu ativo */
     .nav-links.active {
         display: flex;
+        transform: translateX(0);
+        /* Desliza para dentro da tela */
+        visibility: visible;
+    }
+
+    .hamburger.active .span1 {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .hamburger.active .span2 {
+        opacity: 0;
+    }
+
+    .hamburger.active .span3 {
+        transform: translateY(-9px) rotate(-45deg);
     }
 }

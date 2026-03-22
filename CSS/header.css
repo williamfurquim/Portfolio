@@ -93,15 +93,8 @@ header {
 }
 
 .whatsapp-btn:hover {
-    background: #25D366;
+    background: #17813e;
     border: 2px solid #25D366;
-    color: white;
-    transform: translateY(-2px);
-}
-
-.email-btn:hover {
-    background: #ef4444;
-    border: 2px solid #ef4444;
     color: white;
     transform: translateY(-2px);
 }

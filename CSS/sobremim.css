@@ -84,6 +84,13 @@ a {
     transition: 0.3s;
 }
 
+.email-btn:hover {
+    background: #733838;
+    border: 2px solid #ef4444;
+    color: white;
+    transform: translateY(-2px);
+}
+
 /* RESPONSIVIDADE (MOBILE) */
 @media (max-width: 768px) {
     .contato-container {

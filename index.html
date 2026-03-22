@@ -37,14 +37,17 @@
                 <span class="span3"></span>
             </div>
 
-            <a href="https://wa.me/5554996004757" target="_blank"><button class="contact-btn">Fale comigo</button></a>
+            <a href="https://wa.me/5554996004757?text=Olá%20William,%20vi%20seu%20portfólio%20e%20gostaria%20de%20conversar%20sobre%20uma%20oportunidade%20ou%20projeto."
+                target="_blank">
+                <button class="whatsapp-btn">Fale comigo<i class="fa-brands fa-whatsapp"></i></button>
+            </a>
         </header>
 
         <main class="container">
             <p class="p-devfront">Desenvolvedor Front-end</p>
             <h1 class="nome-animado">William Furquim</h1>
-            <p>Construção de aplicações funcionais com foco em <br>
-                performance e experiência do usuário 🔥</p>
+            <p>Construção de sistemas funcionais focadas em <br>
+                performance e experiência do usuário! 🔥</p>
         </main>
 
         <section class="s-infos">
@@ -65,10 +68,11 @@
 
             <div class="infos-icons">
                 <a href="https://github.com/williamfurquim" target="_blank"><i class="fa-brands fa-github"></i></a>
+
                 <a href="https://www.linkedin.com/in/william-furquim-140a992a8/" target="_blank"><i
                         class="fa-brands fa-linkedin-in"></i></a>
-                <a href="https://www.instagram.com/williamfurquim_/?next=%2F" target="_blank"><i
-                        class="fa-brands fa-instagram"></i></a>
+
+                <a href="mailto:williamfurquim@hotmail.com" target="_blank"><i class="fa-regular fa-envelope"></i></a>
             </div>
         </section>
     </section>
@@ -80,33 +84,33 @@
             <div class="carrossel-container">
 
                 <div class="slide active">
-                    <video src="./videos/ConnectPolo.mp4" playsinline playsinline preload="metadata"></video>
+                    <video data-src="./videos/ConnectPolo.mp4" muted playsinline preload="none" controls></video>
                 </div>
 
                 <div class="slide">
-                    <video src="./videos/Robótica.mp4" muted playsinline playsinline preload="metadata"></video>
+                    <video data-src="./videos/Robótica.mp4" muted playsinline preload="none" controls></video>
                 </div>
 
                 <div class="slide">
-                    <video src="./videos/Proximity.mp4" playsinline playsinline preload="metadata"></video>
+                    <video data-src="./videos/Proximity.mp4" muted playsinline preload="none" controls></video>
                 </div>
 
                 <div class="slide">
-                    <video src="./videos/BotStation.mp4" playsinline playsinline preload="metadata"></video>
+                    <video data-src="./videos/BotStation.mp4" muted playsinline preload="none" controls></video>
                 </div>
 
                 <div class="slide">
-                    <video src="./videos/VoidArena.mp4" playsinline playsinline preload="metadata"></video>
+                    <video data-src="./videos/VoidArena.mp4" muted playsinline preload="none" controls></video>
                 </div>
 
             </div>
-
             <button class="prev">&#10094;</button>
             <button class="next">&#10095;</button>
+
         </div>
 
         <div class="projeto-info">
-            <img src="./img/logo1.png" class="projeto-logo" id="projeto-logo">
+            <img src="" class="projeto-logo" id="projeto-logo">
 
             <div class="projeto-texto">
                 <h3 id="projeto-titulo">Nome do Projeto</h3>
@@ -121,9 +125,12 @@
 
         <h2>Resumo profissional</h2>
         <div class="resumo-profissional">
-            <p>Eu sou William Furquim! Desenvolvedor Front-End Júnior focado em construir interfaces modernas,
-                responsivas e bem estruturadas. Trabalho com HTML, CSS, JavaScript e React, aplicando boas práticas,
-                organização e clareza no código. Tenho experiência no consumo e criação de APIs, integração com banco de
+            <p>Desenvolvedor Front-End Júnior focado em construir interfaces modernas,
+                responsivas e bem estruturadas. Trabalho com <span class="span-mark">JavaScript, React, Node e
+                    TypeScript</span>, aplicando boas práticas,
+                organização e clareza no código. <br><br>
+
+                Tenho experiência no consumo e criação de APIs, integração com banco de
                 dados e resolução de problemas com lógica e eficiência, sempre buscando evolução técnica e resultados
                 concretos.</p>
         </div>
@@ -191,32 +198,48 @@
                     constante aprendizado, estou direcionando minha evolução técnica para o desenvolvimento de sistemas
                     complexos e inovadores, com o objetivo de consolidar uma carreira de impacto na área de engenharia
                     de software.</p>
-                    
+                <div class="botoes-footer">
+                    <a href="https://wa.me/5554996004757?text=Olá%20William,%20vi%20seu%20portfólio%20e%20gostaria%20de%20conversar%20sobre%20uma%20oportunidade%20ou%20projeto."
+                        target="_blank">
+                        <button class="whatsapp-btn">WhatsApp<i class="fa-brands fa-whatsapp"></i></button>
+                    </a>
 
-                <a href="https://wa.me/5554996004757" target="_blank"><button class="contact-btn">Enviar
-                        mensagem</button></a>
+                    <a href="mailto:williamfurquim@hotmail.com" 
+                    target="_blank">
+                        <button class="email-btn">E-mail<i class="fa-regular fa-envelope" style="margin-left: 8px;"></i></button></a>
+                </div>
+
+
             </div>
         </div>
     </section>
 
     <div id="modal-formacao" class="modal">
-    <div class="modal-content">
-        <span class="close-modal">X</span>
-        <div class="modal-body">
-            <h2>Minha Formação</h2>
-            <img src="./img/Mecatronica.png" alt="SENAI Mecatrônica">
-            <div class="modal-text">
-                <p>Minha base técnica foi consolidada no curso de <span class="destaque">Auxiliar de Estatística</span> pelo <span class="destaque">SENAI Mecatrônica</span>, uma formação estratégica demandada pelo time de TI da <span class="destaque">Marcopolo (Ana Rech)</span>. <br><br>
+        <div class="modal-content">
+            <span class="close-modal">X</span>
+            <div class="modal-body">
+                <h2>Minha Formação</h2>
+                <img src="./img/Mecatronica.png" alt="SENAI Mecatrônica">
+                <div class="modal-text">
+                    <p>Minha base técnica foi consolidada no curso de <span class="destaque">Auxiliar de
+                            Estatística</span> pelo <span class="destaque">SENAI Mecatrônica</span>, uma formação
+                        estratégica demandada pelo time de TI da <span class="destaque">Marcopolo (Ana Rech)</span>.
+                        <br><br>
 
-                Com foco em Data Science e Programação, especializei-me no desenvolvimento de aplicações web escaláveis e automações de processos. Além do ecossistema <span class="destaque">JavaScript (React/Node.js)</span>, possuo proficiência em <span class="destaque">C++, C# e SQL</span>, permitindo a manipulação avançada de bancos de dados e integração de sistemas. <br><br>
-                
-                Minha expertise estende-se ao IoT (ESP32/Arduino), infraestrutura de redes e Business Intelligence com Qlik Sense e Excel Avançado.</p>
+                        Com foco em Data Science e Programação, especializei-me no desenvolvimento de aplicações web
+                        escaláveis e automações de processos. Além do ecossistema <span class="destaque">JavaScript
+                            (React/Node.js)</span>, possuo proficiência em <span class="destaque">C++, C# e SQL</span>,
+                        permitindo a manipulação avançada de bancos de dados e integração de sistemas. <br><br>
 
-                <p style="margin-top: 15px;"><strong>Tempo de duração: 1200 horas</strong></p>
+                        Minha expertise estende-se ao IoT (ESP32/Arduino), infraestrutura de redes e Business
+                        Intelligence com Qlik Sense e Excel Avançado.
+                    </p>
+
+                    <p style="margin-top: 15px;"><strong>Tempo de duração: 1200 horas</strong></p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     <script src="./JS/modal.js"></script>
     <script src="./JS/carrossel.js"></script>

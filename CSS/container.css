@@ -27,7 +27,7 @@
 }
 
 .nome-animado {
-    background: linear-gradient(270deg, #7da9fb, #00f0ff, #048858, #7da9fb);
+    background: linear-gradient(270deg, #0bb8e3, #7c3aed, #22c55e, #0bb8e3);
     background-size: 400% 400%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -84,7 +84,6 @@
 
     .container .p-devfront{
         font-size: clamp(1.75rem, 3vw, 1.95rem);
-        color: rgb(179, 255, 254)
     }
 }
 

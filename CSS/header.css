@@ -58,10 +58,10 @@ header {
 
 .nav-links a {
     text-decoration: none;
-    color: white;
     position: relative;
     font-size: clamp(1rem, 1.8vw, 1.3rem);
     color: rgb(255, 255, 255);
+    cursor: pointer;
 }
 
 .nav-links a::after {
@@ -81,7 +81,7 @@ header {
 }
 
 /* Botão de contato */
-.contact-btn {
+.whatsapp-btn {
     padding: 0.8rem 1.8rem;
     border-radius: 25px;
     border: 2px solid var(--azul-claro);
@@ -92,10 +92,22 @@ header {
     transition: 0.3s;
 }
 
-.contact-btn:hover {
-    background: var(--azul-claro);
+.whatsapp-btn:hover {
+    background: #25D366;
+    border: 2px solid #25D366;
     color: white;
     transform: translateY(-2px);
+}
+
+.email-btn:hover {
+    background: #ef4444;
+    border: 2px solid #ef4444;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.fa-whatsapp {
+    margin-left: 8px;
 }
 
 /* Hamburger menu */
@@ -107,7 +119,6 @@ header {
     width: 30px;
     height: 21px;
     /* Altura fixa para controlar o espaço entre as linhas */
-    cursor: pointer;
     z-index: 100;
 }
 
@@ -120,6 +131,7 @@ header {
     /* Transição suave para tudo */
     transform-origin: center;
     /* Origem no centro para um X simétrico */
+
 }
 
 /* --- Responsividade --- */
@@ -183,7 +195,7 @@ header {
 
     .nav-links ul li {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(20px);       
     }
 
 

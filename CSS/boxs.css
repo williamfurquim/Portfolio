@@ -57,9 +57,9 @@
 }
 
 .infos-icons i:hover {
-    transform: scale(1.2);
-    color: var(--azul-claro);
+    transform: scale(1.2);   
 }
+
 
 /* --- Responsividade --- */
 

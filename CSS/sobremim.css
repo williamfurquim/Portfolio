@@ -1,3 +1,7 @@
+a {
+    text-decoration: none;
+}
+
 .contato {
     padding: 100px 5%;
     background: var(--fundo);
@@ -12,10 +16,12 @@
     display: flex;
     align-items: center;
     gap: 50px;
-    background: rgba(255, 255, 255, 0.03); /* Efeito sutil de vidro */
+    background: rgba(255, 255, 255, 0.03);
+    /* Efeito sutil de vidro */
     padding: 40px;
     border-radius: 20px;
-    border: 1px solid rgba(11, 184, 227, 0.2); /* Borda no seu azul claro */
+    border: 1px solid rgba(11, 184, 227, 0.2);
+    /* Borda no seu azul claro */
     backdrop-filter: blur(10px);
 }
 
@@ -61,6 +67,23 @@
     cursor: pointer;
 }
 
+.botoes-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.email-btn {
+    padding: 0.8rem 1.8rem;
+    border-radius: 25px;
+    border: 2px solid var(--azul-claro);
+    background: transparent;
+    color: var(--azul-claro);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
 /* RESPONSIVIDADE (MOBILE) */
 @media (max-width: 768px) {
     .contato-container {
@@ -76,10 +99,15 @@
 
 
     .contato-form .contact-btn {
-        width: 100%; /* Botão ocupa tudo no celular */
+        width: 100%;
+        /* Botão ocupa tudo no celular */
     }
 
     .contato-conteudo h2 {
         font-size: 1.8rem;
+    }
+
+    .botoes-footer {
+        flex-direction: column;
     }
 }

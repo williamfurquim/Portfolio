@@ -1,9 +1,8 @@
-window.addEventListener("load", () => {
-    // Remove qualquer hash da URL ao carregar
-    if(window.location.hash){
-        history.replaceState(null, null, ' '); // limpa #projetos
+document.addEventListener("DOMContentLoaded", () => {
+    if (window.location.hash) {
+        history.replaceState(null, null, ' ');
     }
-    window.scrollTo(0,0); // garante que a página inicie no topo
+    window.scrollTo(0, 0);
 });
 
 const slides = document.querySelectorAll(".slide");
@@ -15,6 +14,19 @@ const descricao = document.getElementById("projeto-descricao");
 const logo = document.getElementById("projeto-logo");
 
 let index = 0;
+
+// 🔹 Função de carregamento (mantida + melhorada)
+function loadVideo(video) {
+    if (!video.src) {
+        video.src = video.dataset.src;
+        video.load();
+    }
+}
+
+// 🔹 Pausa global (NOVO - resolve conflito)
+function pauseAllVideos() {
+    document.querySelectorAll(".slide video").forEach(v => v.pause());
+}
 
 const projetos = [
     {
@@ -44,23 +56,27 @@ const projetos = [
     }
 ];
 
-function mostrarSlide(i){
-    slides.forEach((slide, idx)=>{
+function mostrarSlide(i) {
+    slides.forEach((slide, idx) => {
         const video = slide.querySelector("video");
-        if(idx === i){
+
+        if (idx === i) {
             slide.classList.add("active");
-            if(video) video.play();
+
+            if (video) {
+                loadVideo(video);
+            }
         } else {
             slide.classList.remove("active");
-            if(video){
+
+            if (video) {
                 video.pause();
-                video.currentTime = 0;
             }
         }
     });
 
     const projeto = projetos[i];
-    if(projeto){
+    if (projeto) {
         titulo.textContent = projeto.titulo;
         descricao.textContent = projeto.descricao;
         logo.src = projeto.logo;
@@ -68,24 +84,49 @@ function mostrarSlide(i){
     }
 }
 
-next.addEventListener("click",()=>{
+// 🔹 navegação manual
+next.addEventListener("click", () => {
     index = (index + 1) % slides.length;
     mostrarSlide(index);
 });
 
-prev.addEventListener("click",()=>{
+prev.addEventListener("click", () => {
     index = (index - 1 + slides.length) % slides.length;
     mostrarSlide(index);
 });
 
-// autoplay opcional
-let autoSlide = setInterval(() => {
-    index = (index + 1) % slides.length;
-    mostrarSlide(index);
-}, 8000);
+// 🔹 autoplay inteligente (mantido)
+let isUserInteracting = false;
 
 [next, prev].forEach(btn => {
-    btn.addEventListener("click", () => clearInterval(autoSlide));
+    btn.addEventListener("click", () => {
+        isUserInteracting = true;
+        clearInterval(autoSlide);
+    });
 });
 
+let autoSlide = setInterval(() => {
+    if (!isUserInteracting) {
+        index = (index + 1) % slides.length;
+        mostrarSlide(index);
+    }
+}, 8000);
+
+// 🔹 clique nos vídeos (corrigido)
+document.querySelectorAll(".slide video").forEach(video => {
+    video.addEventListener("click", () => {
+
+        pauseAllVideos(); // garante só 1 vídeo ativo
+
+        loadVideo(video);
+
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
+    });
+});
+
+// 🔹 inicialização
 mostrarSlide(index);

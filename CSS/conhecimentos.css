@@ -3,15 +3,25 @@
     width: min(80%, 1100px);
     margin: 0 auto;
 
-    padding: 1.2rem 1rem;
+    padding: 1.2rem 1.8rem;
     border-radius: 12px;
     box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.934);
 }
 
 .resumo-profissional p {
-    text-align: center;
+    text-align: left;
     color: white;
     font-size: clamp(1.1rem, 2vw, 1.2rem);
+    line-height: 28px;
+    
+}
+
+.span-mark {
+    background: linear-gradient(135deg, #2eb1d2, #1c7c94);
+    color: black;
+    padding-inline-start: 8px;
+    padding-inline-end: 3px;
+    border-radius: 4px;
 }
 
 .sobremim h2{
@@ -33,7 +43,7 @@
 
 .bloco-conhecimentos {
     width: min(80%, 1100px);
-    margin: 20px auto;
+    margin: 40px auto;
 }
 
 .bloco-conhecimentos h2{

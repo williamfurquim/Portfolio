@@ -15,7 +15,6 @@ const logo = document.getElementById("projeto-logo");
 
 let index = 0;
 
-// 🔹 Função de carregamento (mantida + melhorada)
 function loadVideo(video) {
     if (!video.src) {
         video.src = video.dataset.src;
@@ -23,36 +22,31 @@ function loadVideo(video) {
     }
 }
 
-// 🔹 Pausa global (NOVO - resolve conflito)
+function resetVideo(video) {
+    video.pause();
+    video.removeAttribute("src"); // remove fonte
+    video.load(); // força limpar buffer
+}
+
 function pauseAllVideos() {
-    document.querySelectorAll(".slide video").forEach(v => v.pause());
+    document.querySelectorAll(".slide video").forEach(v => resetVideo(v));
 }
 
 const projetos = [
     {
         titulo: "ConnectPolo (projeto principal) 🏆",
-        descricao: "Sistema web de gestão e acompanhamento de jovens aprendizes desenvolvido para a Marcopolo, permitindo que líderes monitorem o desempenho e mantenham comunicação centralizada com os seus estudantes. Desenvolvido com HTML, CSS e JavaScript, utilizando o banco de dados Firebase para autenticação e armazenamento de dados, com controle de acesso por perfil e interface totalmente responsiva.",
-        logo: "./img/ConnectPolo.png"
+        descricao: "Sistema de gestão de treinamentos desenvolvido a partir de um problema real na Marcopolo. Substitui processos manuais via WhatsApp e planilhas por uma aplicação centralizada com autenticação, controle de acesso por perfil e organização de dados em tempo real. Foco em estruturação de regras de negócio, escalabilidade e confiabilidade das informações.",
+        logo: "./img/icons/ConnectPolo.png"
+    },
+    {
+        titulo: "TasksCore",
+        descricao: "API REST desenvolvida com arquitetura em camadas (Controller, Service, Repository), focada em organização e escalabilidade. Implementa autenticação via JWT, validação de dados e integração com PostgreSQL utilizando Prisma ORM. Demonstra domínio de backend estruturado e boas práticas de separação de responsabilidades.",
+        logo: "./img/icons/TasksCore.png"
     },
     {
         titulo: "Robótica",
-        descricao: "Interface gráfica para controle e monitoramento em tempo real de sensores robóticos utilizando ESP32 com comunicação via Wi-Fi. Desenvolvida com HTML, CSS e JavaScript para interação dinâmica com o dispositivo, enquanto o firmware em C++ gerencia leitura de sensores e acionamento de atuadores. O sistema abstrai a complexidade do código embarcado por meio de uma interface web responsiva e intuitiva.",
-        logo: "./img/Robótica.png"
-    },
-    {
-        titulo: "Proximity",
-        descricao: "Aplicativo web inovador que potencializa a comunicação e o engajamento em comunidades, oferecendo funcionalidades como troca de itens entre vizinhos, alertas inteligentes em tempo real com integração à API do Google Maps e um mural interativo de notícias e eventos locais. Desenvolvido com HTML, CSS e JavaScript, o projeto também conta com suporte a PWA, garantindo uma experiência dinâmica, responsiva e acessível em qualquer dispositivo.",
-        logo: "./img/Proximity.png"
-    },
-    {
-        titulo: "BotStation",
-        descricao: "Aplicação fullstack de cadastro de usuários desenvolvida com React, TypeScript e Node. Utiliza Supabase para autenticação, persistência de dados e controle de sessão. Cada card contém nome, email, idade e uma imagem aleatória de robô gerada dinamicamente. Integra-se front-end moderno com API RESTful e banco de dados em tempo real. Demonstra boas práticas de tipagem estática, componentes reutilizáveis e fluxo completo de autenticação e autorização.",
-        logo: "./img/BotStation.png"
-    },
-    {
-        titulo: "Void Arena",
-        descricao: "Jogo MOBA 4x4 2D desenvolvido com JavaScript puro e HTML5 Canvas. Foco em lógica de jogo, inteligência artificial e programação orientada a objetos, permitindo que o jogador controle um personagem enquanto aliados e inimigos são gerenciados por IA estratégica. Cada classe possui comportamento específico. O sistema inclui cooldowns, colisão por distância, efeitos visuais e loop principal de jogo com requestAnimationFrame.",
-        logo: "./img/VoidArena.png"
+        descricao: "Interface web para monitoramento e controle de sensores em tempo real utilizando ESP32. Integra frontend com sistemas embarcados via comunicação Wi-Fi, abstraindo a complexidade do firmware em C++ através de uma interface acessível e responsiva.",
+        logo: "./img/icons/Robótica.png"
     }
 ];
 
@@ -63,7 +57,7 @@ function mostrarSlide(i) {
         if (idx === i) {
             slide.classList.add("active");
 
-            if (video) {
+            if (video && idx === i) {
                 loadVideo(video);
             }
         } else {
@@ -78,13 +72,17 @@ function mostrarSlide(i) {
     const projeto = projetos[i];
     if (projeto) {
         titulo.textContent = projeto.titulo;
+        if (projeto.titulo.includes("ConnectPolo")) {
+            titulo.style.color = "#FFD700"; //
+        } else {
+            titulo.style.color = "var(--azul-claro)";
+        }
         descricao.textContent = projeto.descricao;
         logo.src = projeto.logo;
         logo.alt = `Logo do projeto ${projeto.titulo}`;
     }
 }
 
-// 🔹 navegação manual
 next.addEventListener("click", () => {
     index = (index + 1) % slides.length;
     mostrarSlide(index);
@@ -95,7 +93,6 @@ prev.addEventListener("click", () => {
     mostrarSlide(index);
 });
 
-// 🔹 autoplay inteligente (mantido)
 let isUserInteracting = false;
 
 [next, prev].forEach(btn => {
@@ -106,27 +103,27 @@ let isUserInteracting = false;
 });
 
 let autoSlide = setInterval(() => {
-    if (!isUserInteracting) {
+    const currentVideo = slides[index].querySelector("video");
+
+    if (!isUserInteracting && (!currentVideo || currentVideo.paused)) {
         index = (index + 1) % slides.length;
         mostrarSlide(index);
     }
 }, 8000);
 
-// 🔹 clique nos vídeos (corrigido)
 document.querySelectorAll(".slide video").forEach(video => {
     video.addEventListener("click", () => {
 
-        pauseAllVideos(); // garante só 1 vídeo ativo
+        const isPlaying = !video.paused;
+
+        pauseAllVideos(); // limpa tudo
 
         loadVideo(video);
 
-        if (video.paused) {
+        if (!isPlaying) {
             video.play();
-        } else {
-            video.pause();
         }
     });
 });
 
-// 🔹 inicialização
 mostrarSlide(index);

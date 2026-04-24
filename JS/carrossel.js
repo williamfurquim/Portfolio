@@ -30,7 +30,7 @@ function pauseAllVideos() {
 
 const projetos = [
     {
-        titulo: "ConnectPolo",
+        titulo: "ConnectPolo (projeto principal) 🏆",
         descricao: "Sistema web de gestão e acompanhamento de jovens aprendizes desenvolvido para a Marcopolo, permitindo que líderes monitorem o desempenho e mantenham comunicação centralizada com os seus estudantes. Desenvolvido com HTML, CSS e JavaScript, utilizando o banco de dados Firebase para autenticação e armazenamento de dados, com controle de acesso por perfil e interface totalmente responsiva.",
         logo: "./img/ConnectPolo.png"
     },
